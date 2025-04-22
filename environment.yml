@@ -2,9 +2,10 @@ name: Spiralgeometry
 channels:
   - conda-forge
 dependencies:
-  - python=3.10
   - acoular
+  - traits >=4.4 # Version aus dem Acoular requirement.txt übernommen
+  - scipy >=1.7  # Version aus dem Acoular requirement.txt übernommen
+  - ipython
   - numpy
-  - scipy
   - matplotlib
   - pandas
