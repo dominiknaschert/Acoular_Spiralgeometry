@@ -1,0 +1,10 @@
+name: Spiralgeometry
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - acoular
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
