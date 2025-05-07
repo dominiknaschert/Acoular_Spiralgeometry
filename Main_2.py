@@ -2,12 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import acoular as ac
 from acoular import MicGeom, WNoiseGenerator, PointSource, Mixer, WriteH5
-from xml.etree.ElementTree import Element, SubElement, ElementTree
 from pathlib import Path
 
 # Spiral-Array-Generierung nach Sarradj (Paper) 
 
-def generate_spiral_geometry(num_mics=64, R=1.0, V=5.0, filename='spiral_geom.xml'):
+def generate_spiral_geometry(num_mics=64, R=1.0, V=1.5, filename='spiral_geom.xml'):
     """
     Generiert eine Spiral-Mikrofonanordnung nach Sarradj mit V-Parameter aus dem Paper.
     Speichert das Array als XML-Datei im Acoular-Format.
@@ -73,12 +72,13 @@ def main():
     bb = ac.BeamformerBase(freq_data=ps, steer=st)
 
     # Frequenzanalyse bei 8000 Hz
-    pm = bb.synthetic(8000, 3)
+    f = 4000
+    pm = bb.synthetic(f, 3)
     Lm = ac.L_p(pm)
 
     # Plot: Beamforming-Map 
     plt.figure(1)
-    plt.title("Beamforming Map @ 8000 Hz")
+    plt.title(f"Beamforming Map @ {f} Hz")
     plt.imshow(Lm.T, origin='lower', vmin=Lm.max() - 10, extent=rg.extend(), interpolation='bicubic')
     plt.colorbar(label="dB")
 
