@@ -6,7 +6,7 @@ from pathlib import Path
 
 # Spiral-Array-Generierung nach Sarradj (Paper) 
 
-def generate_spiral_geometry(num_mics=64, R=1.0, V=1.5, filename='spiral_geom.xml'):
+def generate_spiral_geometry(num_mics=64, R=1.0, V=1.5, filename='spiralgeometrie.xml'):
     """
     Generiert eine Spiral-Mikrofonanordnung nach Sarradj mit V-Parameter aus dem Paper.
     Speichert das Array als XML-Datei im Acoular-Format.
@@ -28,7 +28,7 @@ def generate_spiral_geometry(num_mics=64, R=1.0, V=1.5, filename='spiral_geom.xm
     mg = MicGeom(pos_total=positions)
     mg.export_mpos(filename)
 
-    print(f"[INFO] Spiral geometry exported to {filename}")
+    print(f"Spiral geometry exported to {filename}")
     return Path(filename)
 
 
@@ -48,13 +48,13 @@ def generate_synthetic_sources(h5_filename='three_sources.h5', xml_file='spiralg
     p = Mixer(source=p1, sources=[p2, p3])
     writer = WriteH5(source=p, file=h5_filename)
     writer.save()
-    print(f"[INFO] Synthetische Zeitdaten gespeichert als: {h5_filename}")
+    print(f"h5-file generiert: {h5_filename}")
     return h5_filename
 
 # Hauptprogramm
 
 def main():
-    print("[START] Generiere Geometrie und simulierte Daten...")
+    print("Generiere Geometrie")
 
     xml_file = generate_spiral_geometry()
     h5_file = generate_synthetic_sources(xml_file=xml_file)
@@ -90,7 +90,7 @@ def main():
     plt.grid()
 
     plt.show()
-    print("[DONE] Beamforming abgeschlossen und visualisiert.")
+    print("Beamforming abgeschlossen und visualisiert.")
 
 if __name__ == "__main__":
     main()
