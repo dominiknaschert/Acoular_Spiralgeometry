@@ -7,6 +7,7 @@ import acoular as ac
 
 #micgeofile = Path(ac.__file__).parent / 'xml' / 'array_64.xml' # Strandart micgeom file aus Acoular Bibliothek
 micgeofile = generate_spiral_geometry()  # Generate the spiral geometry
+print(f"Generated spiral geometry  file: {micgeofile}")
 datafile = Path('three_sources.h5')
 assert datafile.exists(), 'Data file not found, run example_three_sources.py first'
 

@@ -16,7 +16,7 @@ micgeofile = Path(ac.__file__).parent / 'xml' / 'array_64.xml'
 h5savefile = Path('three_sources.h5')
 
 m = ac.MicGeom(file=micgeofile)
-n1 = ac.WNoiseGenerator(sample_freq=sfreq, num_samples=num_samples, seed=1, rms=5.0)
+n1 = ac.WNoiseGenerator(sample_freq=sfreq, num_samples=num_samples, seed=1, rms=1.0)
 n2 = ac.WNoiseGenerator(sample_freq=sfreq, num_samples=num_samples, seed=2, rms=0.7)
 n3 = ac.WNoiseGenerator(sample_freq=sfreq, num_samples=num_samples, seed=3, rms=0.5)
 p1 = ac.PointSource(signal=n1, mics=m, loc=(-0.1, -0.1, -0.3))
@@ -26,7 +26,7 @@ p = ac.Mixer(source=p1, sources=[p2, p3])
 wh5 = ac.WriteH5(source=p, file=h5savefile)
 wh5.save()
 
-micgeofile = Path(ac.__file__).parent / 'xml' / 'array_64.xml'
+'''micgeofile = Path(ac.__file__).parent / 'xml' / 'array_64.xml'
 datafile = Path('three_sources.h5')
 assert datafile.exists(), 'Data file not found, run example_three_sources.py first'
 
@@ -46,4 +46,4 @@ plt.colorbar()
 plt.figure(2)
 plt.plot(mg.pos[0], mg.pos[1], 'o')
 plt.axis('equal')
-plt.show()
+plt.show()'''

@@ -7,9 +7,11 @@ def generate_spiral_geometry():
     """
     Generates a spiral microphone array geometry and saves it to an XML file.
     """
+
+    print("Generating spiral geometry...")
     num_mics = 64
-    a = 0.02  # Startabstand
-    b = 0.01  # Abstandszuwachs pro Winkel (Spiralenbreite)
+    a = 0.01  # Startabstand
+    b = 0.05  # Abstandszuwachs pro Winkel (Spiralenbreite)
     angles = np.linspace(0, 4 * np.pi, num_mics)  # Spiralwinkel
 
     # Positionen berechnen (x = r*cos, y = r*sin, z = 0)
